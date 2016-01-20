@@ -131,8 +131,8 @@ void MainWindow::on_saveButton_clicked()
 
 void MainWindow::initpointform(int aiexamid)
 {
-    while (ui->pointsGridLayout->takeAt(0));
-    ui->pointsGridLayout->update();
+    while (ui->pointsGridLayout->takeAt(0) != 0);
+    ui->secondView->update();
     for (int i = 0; i < _config.getexam(aiexamid).point.size(); ++i)
     {
         _cpointform[i]._cspinbox->setMaximum(_config.getexam(aiexamid).point[i]);

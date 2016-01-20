@@ -1,7 +1,6 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <cctype>
 #include <QMainWindow>
 #include <QDebug>
 #include <QMessageBox>
