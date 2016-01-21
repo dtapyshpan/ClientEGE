@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>544</width>
-    <height>554</height>
+    <width>629</width>
+    <height>566</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -482,40 +482,44 @@
            </layout>
           </item>
           <item>
-           <widget class="QGroupBox" name="pointsGroupBox">
-            <property name="title">
-             <string>Оценки</string>
-            </property>
-            <layout class="QVBoxLayout" name="verticalLayout_8">
-             <item>
-              <layout class="QGridLayout" name="pointsGridLayout"/>
-             </item>
-             <item>
-              <layout class="QHBoxLayout" name="horizontalLayout_8">
+           <layout class="QHBoxLayout" name="horizontalLayout_9">
+            <item>
+             <widget class="QGroupBox" name="pointsGroupBox">
+              <property name="title">
+               <string>Оценки</string>
+              </property>
+              <layout class="QVBoxLayout" name="verticalLayout_8">
                <item>
-                <spacer name="horizontalSpacer_8">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>40</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
+                <layout class="QGridLayout" name="pointsGridLayout"/>
                </item>
                <item>
-                <widget class="QPushButton" name="saveButton">
-                 <property name="text">
-                  <string>Сохранить</string>
-                 </property>
-                </widget>
+                <layout class="QHBoxLayout" name="horizontalLayout_8">
+                 <item>
+                  <spacer name="horizontalSpacer_8">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="saveButton">
+                   <property name="text">
+                    <string>Сохранить</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
                </item>
               </layout>
-             </item>
-            </layout>
-           </widget>
+             </widget>
+            </item>
+           </layout>
           </item>
           <item>
            <spacer name="verticalSpacer_2">

@@ -11,11 +11,19 @@
 
 #include "schoolnameconsts.h"
 #include "configreader.h"
+#include "gradevalidator.h"
+#include "namevalidator.h"
 
 namespace Ui
 {
     class MainWindow;
 }
+
+struct regularexpression
+{
+    static const QString _sregexpgrade;
+    static const QString _sregexpname;
+};
 
 struct Messages
 {
@@ -27,6 +35,9 @@ struct Messages
     static const QString _smissingsecondname;
     static const QString _smissingmiddlename;
     static const QString _swronggrade;
+    static const QString _swrongsecondname;
+    static const QString _swrongmiddlename;
+    static const QString _swrongfirstname;
 };
 
 struct pntform
@@ -46,9 +57,10 @@ struct pntform
 
     ~pntform()
     {
-        Q_ASSERT(_clabel && _cspinbox);
+        Q_ASSERT(_clabel && _cspinbox && _clayout);
         delete _clabel;
         delete _cspinbox;
+        delete _clayout;
     }
 };
 
@@ -77,7 +89,6 @@ private:
     QVector<pntform> _cpointform;
 
     void initsecondview();
-    bool gradecheck();
     void initpointform(int aiexamid);
 };
 
