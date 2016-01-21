@@ -38,6 +38,7 @@ MainWindow::MainWindow(QWidget *parent):
     for (int i = 0; i < _cpointform.size(); ++i)
     {
         _cpointform[i]._clabel->setText(QString::number(i + 1));
+        ui->pointsGridLayout->addLayout(_cpointform[i]._clayout, i/10, i%10);
     }
     for (int i = 0; i < _config.getexamcnt(); ++i)
     {
@@ -131,15 +132,19 @@ void MainWindow::on_saveButton_clicked()
 
 void MainWindow::initpointform(int aiexamid)
 {
-    while (ui->pointsGridLayout->takeAt(0) != 0);
-    ui->secondView->update();
+    for (int i = 0; i < _cpointform.size(); ++i)
+    {
+        _cpointform[i]._clabel->hide();
+        _cpointform[i]._cspinbox->hide();
+    }
     for (int i = 0; i < _config.getexam(aiexamid).point.size(); ++i)
     {
         _cpointform[i]._cspinbox->setMaximum(_config.getexam(aiexamid).point[i]);
     }
     for (int i = 0; i < _config.getexam(aiexamid).point.size(); ++i)
     {
-        ui->pointsGridLayout->addLayout(_cpointform[i]._clayout, i/10, i%10);
+        _cpointform[i]._clabel->show();
+        _cpointform[i]._cspinbox->show();
     }
 }
 
