@@ -55,10 +55,10 @@ MainWindow::MainWindow(QWidget *parent):
         ui->examComboBox->addItem(_config.getexam(i).title);
     }
     QRegExp cgrade(regularexpression::_sregexpgrade);
-    gradevalidator *cgradeval = static_cast<gradevalidator*>(static_cast<QValidator*>(new QRegExpValidator(cgrade, this)));
+    QValidator *cgradeval = new QRegExpValidator(cgrade, this);
     ui->gradeLineEdit->setValidator(cgradeval);
     QRegExp cname(regularexpression::_sregexpname);
-    namevalidator *cnameval = static_cast<namevalidator*>(static_cast<QValidator*>(new QRegExpValidator(cname, this)));
+    QValidator *cnameval = new QRegExpValidator(cname, this);
     ui->secondNameEdit->setValidator(cnameval);
     ui->middleNameEdit->setValidator(cnameval);
     ui->firstNameEdit->setValidator(cnameval);
@@ -112,57 +112,50 @@ void MainWindow::on_saveButton_clicked()
 {
     QString sstr = ui->gradeLineEdit->text();
     int ipos = 0;
-    QValidator::State cstate = ui->gradeLineEdit->validator()->validate(sstr, ipos);
-    qDebug() << "grade " << sstr;
-    if (cstate == QValidator::Invalid)
+    if (sstr.isEmpty() == true)
     {
-        qDebug() << "1";
         QMessageBox::warning(this, Messages::_swarningtitle, Messages::_smissinggrade);
         return;
     }
-    if (cstate == QValidator::Intermediate)
+    if (ui->gradeLineEdit->validator()->validate(sstr, ipos) == QValidator::Intermediate)
     {
-        qDebug() << "2";
         QMessageBox::warning(this, Messages::_swarningtitle, Messages::_swronggrade);
         return;
     }
 
     sstr = ui->secondNameEdit->text();
-    cstate = ui->secondNameEdit->validator()->validate(sstr, ipos);
-    if (cstate == QValidator::Invalid)
+    if (sstr.isEmpty() == true)
     {
         QMessageBox::warning(this, Messages::_swarningtitle, Messages::_smissingsecondname);
         return;
     }
-    if (cstate == QValidator::Intermediate)
+    if (ui->secondNameEdit->validator()->validate(sstr, ipos) == QValidator::Intermediate)
     {
         QMessageBox::warning(this, Messages::_swarningtitle, Messages::_swrongsecondname);
         return;
     }
 
-    sstr = ui->middleNameEdit->text();
-    cstate = ui->middleNameEdit->validator()->validate(sstr, ipos);
-    if (cstate == QValidator::Invalid)
-    {
-        QMessageBox::warning(this, Messages::_swarningtitle, Messages::_smissingmiddlename);
-        return;
-    }
-    if (cstate == QValidator::Intermediate)
-    {
-        QMessageBox::warning(this, Messages::_swarningtitle, Messages::_swrongmiddlename);
-        return;
-    }
-
     sstr = ui->firstNameEdit->text();
-    cstate = ui->firstNameEdit->validator()->validate(sstr, ipos);
-    if (cstate == QValidator::Invalid)
+    if (sstr.isEmpty() == true)
     {
         QMessageBox::warning(this, Messages::_swarningtitle, Messages::_smissingfirstname);
         return;
     }
-    if (cstate == QValidator::Intermediate)
+    if (ui->firstNameEdit->validator()->validate(sstr, ipos) == QValidator::Intermediate)
     {
         QMessageBox::warning(this, Messages::_swarningtitle, Messages::_swrongfirstname);
+        return;
+    }
+
+    sstr = ui->middleNameEdit->text();
+    if (sstr.isEmpty() == true)
+    {
+        QMessageBox::warning(this, Messages::_swarningtitle, Messages::_smissingmiddlename);
+        return;
+    }
+    if (ui->middleNameEdit->validator()->validate(sstr, ipos) == QValidator::Intermediate)
+    {
+        QMessageBox::warning(this, Messages::_swarningtitle, Messages::_swrongmiddlename);
         return;
     }
 }

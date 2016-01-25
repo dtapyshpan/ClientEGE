@@ -12,16 +12,12 @@ CONFIG += c++11
 
 SOURCES += main.cpp\
            mainwindow.cpp \
-    configreader.cpp \
-    gradevalidator.cpp \
-    namevalidator.cpp
+    configreader.cpp
 
 HEADERS += mainwindow.h \
     schoolnameconsts.h \
     pupil.h \
     exams.h \
-    configreader.h \
-    gradevalidator.h \
-    namevalidator.h
+    configreader.h
 
 FORMS += mainwindow.ui

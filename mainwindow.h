@@ -11,8 +11,6 @@
 
 #include "schoolnameconsts.h"
 #include "configreader.h"
-#include "gradevalidator.h"
-#include "namevalidator.h"
 
 namespace Ui
 {
