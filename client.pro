@@ -12,7 +12,8 @@ CONFIG += c++11
 
 SOURCES += main.cpp\
            mainwindow.cpp \
-    configreader.cpp
+    configreader.cpp \
+    pupil.cpp
 
 HEADERS += mainwindow.h \
     schoolnameconsts.h \

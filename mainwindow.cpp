@@ -34,7 +34,6 @@ MainWindow::MainWindow(QWidget *parent):
     ui->setupUi(this);
     ui->mainView->show();
     ui->secondView->hide();
-    ui->tableview->hide();
     if (_config.deserialize(_sconfigfilename) != true)
     {
         QMessageBox::critical(this, Messages::_scriticaltitle, Messages::_scriticalmessage);
@@ -76,7 +75,6 @@ void MainWindow::on_nextButtonMainView_clicked()
     _iregionid = ui->regionsComboBox->currentIndex();
     ui->mainView->hide();
     ui->secondView->show();
-    ui->tableview->show();
     initsecondview();
 }
 
@@ -100,7 +98,6 @@ void MainWindow::on_backButtonSecondView_clicked()
     ui->regionName->setText("");
     ui->mainView->show();
     ui->secondView->hide();
-    ui->tableview->hide();
     ui->regionsComboBox->setCurrentIndex(0);
 }
 
